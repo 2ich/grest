@@ -1,5 +1,5 @@
 function Blob(x, y, r) {
-    this.pos = createVector(x, y)
+    this.pos = createVector(0, 0)
     this.r = r
 
     this.update = () => {
@@ -11,10 +11,14 @@ function Blob(x, y, r) {
     this.eats = function(other) {
         var d = p5.Vector.dist(this.pos, other.pos)
         if (d < this.r + other.r) {
-            this.r += other.r * 0.2
+            var sum = PI * this.r * this.r * PI * other.r * other.r
+            this.r = sqrt(sum / PI)
+            //this.r += other.r * 0.2
             return true
         }
+        else {
         return false
+        }
     }
 
     this.show = function() {
