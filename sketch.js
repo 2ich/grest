@@ -15,8 +15,8 @@ function draw() {
     background(14)
 
     translate(width/2 - blob.pos.x, height/2 - blob.pos.y)
-    
-    scale(64 / blob.r)
+    //translate(width/2, height/2) 
+    //scale(64 / blob.r)
     blob.show()
 
     blob.update()
