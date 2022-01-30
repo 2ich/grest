@@ -3,8 +3,7 @@ function Blob(x, y, r) {
     this.r = r
 
     this.update = () => {
-        var vel = createVector(mouseX, mouseY)
-        vel.sub(this.pos)
+        var vel = createVector(mouseX - width/2, mouseY - height/2)
         vel.setMag(3)
         this.pos.add(vel)
     }
