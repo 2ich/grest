@@ -1,5 +1,6 @@
 var blob;
 var blobs = []
+var zoom = 1
 
 function setup() {
     createCanvas(600, 600)
@@ -14,11 +15,22 @@ function setup() {
 function draw() {
     background(14)
 
+    //rect(0, 0, 20)
+
     //translate(width/2 - blob.pos.x, height/2 - blob.pos.y)
+    //console.log('before', blob.pos.x, blob.pos.y)
+
     translate(width/2, height/2) 
-    scale(64 / blob.r)
+    var newscale = 64 / blob.r
+    zoom = lerp(zoom, newscale, 0.1)
+    //rect(0, 0, 60)
+    scale(zoom)
     translate(-blob.pos.x, -blob.pos.y)
 
+
+    rect(0, 0, 20)
+    //console.log('after', blob.pos.x, blob.pos.y)
+    
     for (var i = blobs.length - 1; i >= 0; i--) {
         blobs[i].show()
         if (blob.eats(blobs[i])) {

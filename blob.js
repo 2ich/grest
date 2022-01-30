@@ -1,11 +1,14 @@
 function Blob(x, y, r) {
     this.pos = createVector(x, y)
     this.r = r
+    this.vel = createVector(0, 0)
 
     this.update = () => {
-        var vel = createVector(mouseX - width/2, mouseY - height/2)
-        vel.setMag(5)
-        this.pos.add(vel)
+        var newvel = createVector(mouseX - width/2, mouseY - height/2)
+        newvel.setMag(5)
+        this.vel.lerp(newvel, 0.25)
+        this.pos.add(this.vel)
+
     }
 
     this.eats = function(other) {
@@ -23,8 +26,8 @@ function Blob(x, y, r) {
     this.show = function() {
         fill(255)
         noStroke()
-        stroke(127)
-        strokeWeight(3)
+        stroke(100, 127, 255)
+        strokeWeight(6) // 5
         ellipse(this.pos.x, this.pos.y, this.r * 2)
         //fontSize(40)
         //p5.text(this.pos.x + ', ' + this.pos.y, 0, 0)
