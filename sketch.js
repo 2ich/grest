@@ -14,16 +14,17 @@ function setup() {
 function draw() {
     background(14)
 
-    translate(width/2 - blob.pos.x, height/2 - blob.pos.y)
-    //translate(width/2, height/2) 
-    //scale(64 / blob.r)
-    blob.show()
+    //translate(width/2 - blob.pos.x, height/2 - blob.pos.y)
+    translate(width/2, height/2) 
+    scale(64 / blob.r)
+    translate(-blob.pos.x, -blob.pos.y)
 
-    blob.update()
     for (var i = blobs.length - 1; i >= 0; i--) {
         blobs[i].show()
         if (blob.eats(blobs[i])) {
             blobs.splice(i, 1)
         }
     }
+    blob.show()
+    blob.update()
 }
