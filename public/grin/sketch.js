@@ -35,6 +35,7 @@ function draw() {
         blobs[i].show()
         if (blob.eats(blobs[i])) {
             blobs.splice(i, 1)
+            blobs.push(new Blob(random(-width, width), random(-height, height), 32))
         }
     }
     blob.show()
