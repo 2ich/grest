@@ -1,13 +1,19 @@
-const { text } = require("body-parser")
+function Blob(x, y, r) {
+    this.pos = createVector(x, y)
+    this.r = r
 
-function Blob() {
-    this.pos = createVector(width / 2, height / 2)
-    this.r = 64
+    this.update = () => {
+        var vel = createVector(mouseX, mouseY)
+        vel.sub(this.pos)
+        vel.setMag(3)
+        this.pos.add(vel)
+    }
 
     this.show = function() {
         fill(255)
         noStroke()
+        stroke(127)
+        strokeWeight(3)
         ellipse(this.pos.x, this.pos.y, this.r * 2)
-        //text('hello', 200, 200)
     }
 }
