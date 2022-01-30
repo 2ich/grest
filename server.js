@@ -1,3 +1,12 @@
+var blobs = []
+
+function Blob(id, x, y, r) {
+    this.id = id
+    this.x = x
+    this.y = y
+    this.r = r
+}
+
 
 var express = require('express')
 
@@ -11,17 +20,37 @@ console.log('Mysocket server')
 var socket = require('socket.io')
 var io = socket(server)
 
-io.on('connection', newConnection)
+setInterval(heartbeat, 20)
 
-function newConnection(socket) {
+function heartbeat() {
+    // socket.broadcast.emit('heartbeat', blobs)
+    io.emit('heartbeat', blobs)
+}
+
+io.on('connection', function(socket) {
     console.log('new connection', socket.id)
 
-    socket.on('mouse', mouseMsg)
+    var blob = new Blob(socket.id, 0, 0)
+    blobs.push(blob)
 
-    function mouseMsg(data) {
-        socket.broadcast.emit('mouse', data)
-        console.log(data)
-    }
+    socket.on('start', function (data) {
+        console.log(socket.id + ' (' + data.x + ', ' + data.y + ') r = ' + data.r)
+        blob = new Blob(socket.id, data.x, data.y, data.r)
+        // socket.broadcast.emit('mouse', data)
+    })
 
+    socket.on('update', function (data) {
+        console.log(socket.id + ' (' + data.x + ', ' + data.y + ') r = ' + data.r)
+        // socket.broadcast.emit('mouse', data)
+        //var blob
+        for (var i = 0; i < blobs.length; i++) {
+            if (socket.id == blobs[i].id) {
+                blob = blobs[i]
+            }
+        }
+        blob.x = data.x
+        blob.y = data.y
+        blob.r = data.r
+    })
 
-}
+})
