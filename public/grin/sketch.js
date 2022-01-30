@@ -46,7 +46,7 @@ function draw() {
     //console.log('before', blob.pos.x, blob.pos.y)
 
     translate(width/2, height/2) 
-    var newscale = 32 / blob.r
+    var newscale = 8 / blob.r
     zoom = lerp(zoom, newscale, 0.1)
     //rect(0, 0, 60)
     scale(zoom)
