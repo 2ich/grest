@@ -53,4 +53,17 @@ io.on('connection', function(socket) {
         blob.r = data.r
     })
 
+    socket.on('disconnect', (reason) => {
+        // blobs.forEach(blb => {
+        //     if (blb.id == socket.id) {
+
+        //     }
+        // })
+        for (let i = blobs.length - 1; i >= 0; i--) {
+            if (blobs[i].id == socket.id) {
+                blobs.splice(i, 1)
+            }
+        }
+    })
+
 })
