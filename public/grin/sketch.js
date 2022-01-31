@@ -108,7 +108,7 @@ function draw() {
     }
 
     // lerpk = lerpk * 1.1
-    lerpk = lerpk * 2
+    lerpk = lerpk * 1.9
 
     blob.show()
     blob.update()
