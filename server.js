@@ -20,7 +20,7 @@ console.log('Mysocket server')
 var socket = require('socket.io')
 var io = socket(server)
 
-setInterval(heartbeat, 20)
+setInterval(heartbeat, 50)
 
 function heartbeat() {
     // socket.broadcast.emit('heartbeat', blobs)

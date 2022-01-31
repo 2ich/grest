@@ -30,9 +30,10 @@ function Blob(x, y, r) {
     }
 
     this.show = function() {
-        fill(255)
+        fill(100, 127, 255)
         noStroke()
-        stroke(100, 127, 255)
+        //stroke(100, 127, 255)
+        stroke(255)
         strokeWeight(6) // 5
         ellipse(this.pos.x, this.pos.y, this.r * 2)
         //fontSize(40)
