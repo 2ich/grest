@@ -1,11 +1,12 @@
-function Blob(x, y, r) {
+function Blob(id, x, y, r) {
+    this.id = id
     this.pos = createVector(x, y)
     this.r = r
     this.vel = createVector(0, 0)
 
     this.update = () => {
         var newvel = createVector(mouseX - width/2, mouseY - height/2)
-        newvel.setMag(5)
+        newvel.setMag(7)
         this.vel.lerp(newvel, 1)
         this.pos.add(this.vel)
         this.constrain()
