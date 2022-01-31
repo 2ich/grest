@@ -15,7 +15,7 @@ var blerk = 0.2
 var lerpk = blerk
 
 function setup() {
-    createCanvas(600, 600)
+    createCanvas(1200, 800)
    
     socket = io.connect()
 
