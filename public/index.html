@@ -1,12 +1,40 @@
 <head>
     <title>Ttile</title>
+    
+    <style>
+        #menu {
+            /* position: absolute; */
+
+        } 
+        .parent {
+            background: #CCCCCC;
+            /* height: 200px;
+            width: 200px; */
+            position: relative;
+            top: 50%;
+            }
+        .child {
+            background: #ffc400;
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -35px 0 0 -35px;
+        }
+        
+    </style>
 </head>
 
 <body>
-    <h1>
-        <a href="/one">proceed</a>
-    </h1>
-    <p>
-        ok
-    </p>
+    <div id="menu" class="parent">
+        <div class="child">
+            <h1>
+                <a href="/one">proceed</a>
+            </h1>
+            <p>
+                ok
+            </p>
+        </div>
+    </div>
 </body>
